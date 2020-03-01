@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Island1.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/1945_islands-sheet.png" type="Texture" id=2]
+
+[node name="Island1" type="Sprite"]
+position = Vector2( 525.534, 117.422 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 2, 2, 62, 63 )
+script = ExtResource( 1 )

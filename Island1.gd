@@ -5,22 +5,23 @@ extends Sprite
 # var b = "text"
 var fart
 var sprite
-onready var plane = get_node("../../Physicsbody/Plane")
+onready var bakgrund = get_node("/root/Main/Bakgrund")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	randomize()
-	position = Vector2(rand_range(1200,1300),rand_range(100,600))
+	position = Vector2(rand_range(500,900),rand_range(100,600))
 	sprite = randi() % 3
-	print(sprite)
 	
 	if sprite == 0:
-		self.region_rect = Rect2(Vector2(2,2), Vector2(62,63))
+		region_rect = Rect2(Vector2(2,2), Vector2(62,63))
 	elif sprite == 1:
-		self.region_rect = Rect2(Vector2(67,2), Vector2(62,63))
+		region_rect = Rect2(Vector2(67,2), Vector2(62,63))
 	else:
-		self.region_rect = Rect2(Vector2(132,2), Vector2(62,63))
+		region_rect = Rect2(Vector2(132,2), Vector2(62,63))
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	position -= Vector2(2,0)
+	position += Vector2(bakgrund.speed,0)
+	if position.x < -64:
+		queue_free()
