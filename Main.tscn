@@ -1,16 +1,22 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Sprites/back_water.png" type="Texture" id=1]
-[ext_resource path="res://Sprites/island3.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/1945_islands-sheet.png" type="Texture" id=2]
 [ext_resource path="res://Island1.gd" type="Script" id=3]
 [ext_resource path="res://Sprites/myplane.png" type="Texture" id=4]
 [ext_resource path="res://Plane.gd" type="Script" id=5]
+[ext_resource path="res://Bakgrund.gd" type="Script" id=6]
 
 [node name="Main" type="Node2D"]
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+[node name="Bakgrund" type="ParallaxBackground" parent="."]
+script = ExtResource( 6 )
 
-[node name="Sprite" type="Sprite" parent="ParallaxBackground"]
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Bakgrund"]
+motion_mirroring = Vector2( 1024, 0 )
+
+[node name="Sprite" type="Sprite" parent="Bakgrund/ParallaxLayer"]
+position = Vector2( 0, -0.340561 )
 texture = ExtResource( 1 )
 centered = false
 region_enabled = true
@@ -21,6 +27,8 @@ region_rect = Rect2( 0, 0, 1024, 600 )
 [node name="Island1" type="Sprite" parent="Enviroment"]
 position = Vector2( 525.534, 117.422 )
 texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 2, 2, 62, 63 )
 script = ExtResource( 3 )
 
 [node name="Physicsbody" type="Node2D" parent="."]
